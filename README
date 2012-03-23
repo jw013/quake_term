@@ -1,0 +1,136 @@
+=============
+quake_term.sh
+=============
+
+:Version: 0.5
+:URL: https://github.com/jw013/quake_term
+
+``quake_term.sh`` is a small flexible utility that adds Quake-like 
+drop-down functionality to just about any X11 terminal emulator in most 
+window managers/desktop environments. 
+
+The advantage of ``quake_term.sh`` over other similar scripts lies
+mainly in its flexibility and few dependencies.  The script itself is
+written in the fairly portable POSIX shell (sh) and should work with
+most terminal emulators EMWH-compliant X11 window manager.  With the one
+exception of wmctrl, all of its dependencies are normally already
+installed with any standard \*nix X11 setup.  Finally, quake_term.sh is
+entirely self-contained -- everything is done in one shell script, and
+no external temporary files are needed.
+
+The idea behind ``quake_term.sh`` is simple: it identifies the
+drop-down-enabled terminal by setting its ``WM_CLASS`` attribute
+to a fairly unique string that no other application is likely to use.
+Every time it is called, it uses xprop to determine whether the
+currently focused window matches the unique WM_CLASS identifier string
+and minimizes/restores your drop-down terminal as appropriate.
+
+Usage
+=====
+
+Dependencies
+------------
+
+* ``wmctrl`` `<http://tomas.styblo.name/wmctrl/>`_
+* ``xprop`` (should be included in any standard X11 installation)
+* ``grep``
+
+Setup
+-----
+
+For the most basic use case, all that is needed is to simply use your 
+window manager/desktop environment settings to map a keyboard shortcut 
+(e.g. ``Alt-```) to run quake_term.sh.  quake_term.sh will automatically 
+start the terminal if it is not already running, and toggle between 
+minimizing/focus the window otherwise.
+
+Using a different terminal emulator
+-----------------------------------
+
+As long as your terminal emulator has a command-line option to set its
+WM_CLASS attribute, it can be used with quake_term.  Simply change the
+command line that runs the default terminal (currently ``lxterm``) to
+run your terminal emulator with the appropriate switches instead.
+
+Tested setups
+-------------
+
+**Terminals**
+
+* ``rxvt-unicode``
+* ``xterm``
+  
+**Window Managers**
+
+* ``openbox`` 
+  
+If you've tried this with other terminals and window managers, please
+feel free to add them here.
+
+Limitations
+===========
+
+Currently, due to the way it is designed, quake_term.sh only supports 
+one drop-down-enabled terminal at a time - it is not possible to have 
+multiple drop-down-terminals running simultaneously.  If this bothers 
+you, see the "Contact" section for bug reports / patch submissions / 
+feature requests.
+
+Choosing which terminal emulator to use is currently done by editing 
+quake_term.sh itself, which is not very multi-user friendly or 
+particularly convenient.  In a future release, the terminal emulator 
+command will be specified as arguments instead of being hard-coded.
+
+Changelog
+=========
+
+*   uploaded to GitHub
+    <URL: https://github.com/jw013/quake_term>
+    -- 2011-07-02
+
+*   posted to Debian User Forums 
+    <URL: http://forums.debian.net/viewtopic.php?f=16&t=60374#p352103>
+    -- 2011-02-14
+
+Contact
+=======
+
+    | Current maintainer: jw013
+    | https://github.com/jw013  
+
+For bug reports, feature requests, patches, or other suggestions, send 
+me a message on github or via email at the address above.  If you use 
+email, prepend "[quake_term]" to the subject line to make it easier to 
+find your message.
+
+About the repository
+====================
+
+The latest upstream is hosted on github at the URL given at the top of 
+this file.  The git repository is organized on the following principles.
+
+*   The `master` branch should be for stable tagged versions only, and 
+    should always be in a working state.
+*   The `next` branch should be for only for merging commits for the 
+    next release.  Commits should not be made to this branch directly.
+    Once the release is ready, merge into master and tag it.
+*   Make new branches off of next or master for working on features.
+
+Copying
+=======
+
+Copyright © 2011 jw013
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
