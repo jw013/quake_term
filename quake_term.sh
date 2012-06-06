@@ -17,25 +17,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+quake_term_term=quake_term_term
 quake_term_wmclass=quake_xterm
 
 # make sure wmctrl exists
 if ! command -v wmctrl >/dev/null 2>&1; then
-    echo Error: required dependency wmctrl not found. >&2
-    exit 1
+	echo Error: required dependency wmctrl not found. >&2
+	exit 1
 fi
 
 active_window_id=\
 "$(xprop -root | sed -n -e '/^_NET_ACTIVE/s/^[[:print:]]\{40\}//p')"
 
 # if active window WM_CLASS matches $quake_term_wmclass
-if xprop -id "$active_window_id" 2>/dev/null | \
-    grep -q '^WM_CLASS(STRING)[[:print:]]*'"$quake_term_wmclass" 
+if xprop -id "$active_window_id" 2>/dev/null |
+	grep -q '^WM_CLASS(STRING)[[:print:]]*'"$quake_term_wmclass"
 then # hide active quake term
-    wmctrl -i -r "$active_window_id" -b add,hidden 
+	wmctrl -i -r "$active_window_id" -b add,hidden
 # else, attempt to both focus and raise quake terminal
 # If unsuccessful, no quake terminal is running, so start one
 elif ! wmctrl -R "$quake_term_wmclass" -x ; then
-    lxterm -geometry 88x24 -name "$quake_term_wmclass" &
+	if command -v "$quake_term_term" >/dev/null 2>&1; then
+		"$quake_term_term" "$quake_term_wmclass" &
+	else
+		# use a default terminal
+		lxterm -geometry 88x24 -name "$quake_term_wmclass" &
+	fi
 fi
-

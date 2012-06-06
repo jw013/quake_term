@@ -5,18 +5,16 @@ quake_term.sh
 :Version: 0.5
 :URL: https://github.com/jw013/quake_term
 
-``quake_term.sh`` is a small flexible utility that adds Quake-like 
-drop-down functionality to just about any X11 terminal emulator in most 
-window managers/desktop environments. 
+``quake_term.sh`` is a small flexible utility that adds Quake-like
+hotkey-triggered drop-down functionality to just about any X11 terminal
+emulator in most window managers/desktop environments. 
 
 The advantage of ``quake_term.sh`` over other similar scripts lies
 mainly in its flexibility and few dependencies.  The script itself is
-written in the fairly portable POSIX shell (sh) and should work with
-most terminal emulators EMWH-compliant X11 window manager.  With the one
-exception of wmctrl, all of its dependencies are normally already
-installed with any standard \*nix X11 setup.  Finally, quake_term.sh is
-entirely self-contained -- everything is done in one shell script, and
-no external temporary files are needed.
+written in portable POSIX shell (sh), and it should work with most
+terminal emulators and EMWH-compliant X11 window managers.  With the one
+exception of wmctrl, all of its dependencies are normally included with
+any standard \*nix X11 setup.
 
 The idea behind ``quake_term.sh`` is simple: it identifies the
 drop-down-enabled terminal by setting its ``WM_CLASS`` attribute
@@ -38,19 +36,22 @@ Dependencies
 Setup
 -----
 
-For the most basic use case, all that is needed is to simply use your 
-window manager/desktop environment settings to map a keyboard shortcut 
-(e.g. ``Alt-```) to run quake_term.sh.  quake_term.sh will automatically 
-start the terminal if it is not already running, and toggle between 
-minimizing/focus the window otherwise.
+For the most basic use case, all that is needed is to simply use your
+window manager/desktop environment settings to map a keyboard shortcut
+(e.g. ``Alt-```) to run ``quake_term.sh`` without arguments.
+``quake_term.sh`` will automatically start the terminal if it is not
+already running, and toggle between minimizing/focus the window
+otherwise.  The default terminal emulator is current xterm (technically,
+``lxterm``, a locale-sensitive wrapper).
 
 Using a different terminal emulator
 -----------------------------------
 
-As long as your terminal emulator has a command-line option to set its
-WM_CLASS attribute, it can be used with quake_term.  Simply change the
-command line that runs the default terminal (currently ``lxterm``) to
-run your terminal emulator with the appropriate switches instead.
+If a command called ``quake_term_term`` exists in your ``$PATH``,
+``quake_term.sh`` will invoke that instead of the default terminal
+emulator.  The ``quake_term_term`` if it exists must take a single
+argument consisting of the window class (``WM_CLASS``) string described
+above.
 
 Tested setups
 -------------
@@ -58,7 +59,7 @@ Tested setups
 **Terminals**
 
 * ``rxvt-unicode``
-* ``xterm``
+* ``xterm`` (and variants)
   
 **Window Managers**
 
@@ -76,20 +77,25 @@ multiple drop-down-terminals running simultaneously.  If this bothers
 you, see the "Contact" section for bug reports / patch submissions / 
 feature requests.
 
-Choosing which terminal emulator to use is currently done by editing 
-quake_term.sh itself, which is not very multi-user friendly or 
-particularly convenient.  In a future release, the terminal emulator 
-command will be specified as arguments instead of being hard-coded.
+Some limited testing seems to indicate that ``wmctrl`` does not correctly hide
+or minimize windows in the ``metacity`` window manager.
 
 Changelog
 =========
 
+*   parameterized the terminal emulator command so ``quake_term.sh`` can
+    be used with other emulators without editing the script itself
+
+    -- 2012-06-05
+
 *   uploaded to GitHub
     <URL: https://github.com/jw013/quake_term>
+
     -- 2011-07-02
 
 *   posted to Debian User Forums 
     <URL: http://forums.debian.net/viewtopic.php?f=16&t=60374#p352103>
+
     -- 2011-02-14
 
 Contact
