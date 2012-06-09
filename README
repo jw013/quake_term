@@ -54,34 +54,30 @@ Adding the keybind for ``Alt-``` (check
 `http://openbox.org/wiki/Help:Bindings#Keys`_ for more info about keybinds)
 
 Open your /home/username/.config/openbox/rc.xml and jump to the
-<keyboard> section, then add this lines:
+<keyboard> section, then add this lines.
 
-``` xml
     <keybind key="A-0x31">
-      <action name="Execute">
+        <action name="Execute">
         <execute>/home/username/bin/quake_term.sh</execute>
-      </action>
+        </action>
     </keybind>
-```
 
 To make your terminal window to look more like a queake terminal,
 open your /home/username/.config/openbox/rc.xml and jump to
-<applications> section, then add this lines:
+<applications> section, then add this lines.
 
-``` xml
     <application name="roxterm">
-      <decor>no</decor>
-      <position force="yes">
+        <decor>no</decor>
+        <position force="yes">
         <x>center</x>
         <y>0</y>
-      </position>
-      <desktop>all</desktop>
-      <layer>above</layer>
-      <skip_pager>yes</skip_pager>
-      <skip_taskbar>yes</skip_taskbar>
-      <maximized>Horizontal</maximized>
+        </position>
+        <desktop>all</desktop>
+        <layer>above</layer>
+        <skip_pager>yes</skip_pager>
+        <skip_taskbar>yes</skip_taskbar>
+        <maximized>Horizontal</maximized>
     </application>
-```
 
 
 Using a different terminal emulator
