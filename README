@@ -51,9 +51,9 @@ This configuration works with roxterm and urxvt, but probably will work
 with your favorite terminal emulator.
 
 Adding the keybind for ``Alt-``` (check
-`http://openbox.org/wiki/Help:Bindings#Keys`_ for more info about keybinds)
+http://openbox.org/wiki/Help:Bindings#Keys for more info about keybinds)
 
-Open your /home/username/.config/openbox/rc.xml and jump to the
+Open your ``/home/username/.config/openbox/rc.xml`` and jump to the
 <keyboard> section, then add this lines.
 
     <keybind key="A-0x31">
