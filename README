@@ -56,16 +56,16 @@ http://openbox.org/wiki/Help:Bindings#Keys for more info about keybinds)
 Open your ``/home/username/.config/openbox/rc.xml`` and jump to the
 <keyboard> section, then add this lines.
 
-``<keybind key="A-0x31">
+    <keybind key="A-0x31">
         <action name="Execute">
         <execute>/home/username/bin/quake_term.sh</execute>
         </action>
-    </keybind>``
+    </keybind>
 
 To make your terminal window to look more like a queake terminal,
  jump to the <applications> section and add this lines.
 
-``<application name="roxterm">
+    <application name="roxterm">
         <decor>no</decor>
         <position force="yes">
         <x>center</x>
@@ -76,7 +76,7 @@ To make your terminal window to look more like a queake terminal,
         <skip_pager>yes</skip_pager>
         <skip_taskbar>yes</skip_taskbar>
         <maximized>Horizontal</maximized>
-    </application>``
+    </application>
 
 Using a different terminal emulator
 -----------------------------------
