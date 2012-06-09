@@ -29,7 +29,7 @@ Usage
 Dependencies
 ------------
 
-* ``wmctrl`` `<http://tomas.styblo.name/wmctrl/>`_
+* ``wmctrl`` `sudo apt-get install wmctrl` `<http://tomas.styblo.name/wmctrl/>`_
 * ``xprop`` (should be included in any standard X11 installation)
 * ``grep``
 
@@ -43,6 +43,40 @@ window manager/desktop environment settings to map a keyboard shortcut
 already running, and toggle between minimizing/focus the window
 otherwise.  The default terminal emulator is current xterm (technically,
 ``lxterm``, a locale-sensitive wrapper).
+
+Openbox example configuration
+-----------------------------
+
+This configuration works with roxterm and urxvt, but probably will work
+with your favorite terminal emulator.
+
+Adding the keybind for ``Alt-``` (check
+http://openbox.org/wiki/Help:Bindings#Keys for more info about keybinds)
+
+Open your ``/home/username/.config/openbox/rc.xml`` and jump to the
+<keyboard> section, then add this lines.
+
+    <keybind key="A-0x31">
+        <action name="Execute">
+        <execute>/home/username/bin/quake_term.sh</execute>
+        </action>
+    </keybind>
+
+To make your terminal window to look more like a queake terminal,
+ jump to the <applications> section and add this lines.
+
+    <application name="roxterm">
+        <decor>no</decor>
+        <position force="yes">
+            <x>center</x>
+            <y>0</y>
+        </position>
+        <desktop>all</desktop>
+        <layer>above</layer>
+        <skip_pager>yes</skip_pager>
+        <skip_taskbar>yes</skip_taskbar>
+        <maximized>Horizontal</maximized>
+    </application>
 
 Using a different terminal emulator
 -----------------------------------
