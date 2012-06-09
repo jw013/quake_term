@@ -44,6 +44,36 @@ already running, and toggle between minimizing/focus the window
 otherwise.  The default terminal emulator is current xterm (technically,
 ``lxterm``, a locale-sensitive wrapper).
 
+Openbox example configuration
+-----------------------------
+This configuration works with roxterm and urxvt, but probably will work
+with your favorite terminal emulator.
+
+Adding the keybind
+Open your /home/username/.config/openbox/rc.xml
+    <!-- Open the terminal when you press ``Alt-``` -->
+    <keybind key="A-0x31">
+      <action name="Execute">
+        <execute>/home/username/bin/quake_term.sh</execute>
+      </action>
+    </keybind>
+
+Windows without borders and in the top (Quake alike)
+Jump to <applications> group and add this lines
+    <application name="roxterm">
+      <decor>no</decor>
+      <position force="yes">
+        <x>center</x>
+        <y>0</y>
+      </position>
+      <desktop>all</desktop>
+      <layer>above</layer>
+      <skip_pager>yes</skip_pager>
+      <skip_taskbar>yes</skip_taskbar>
+      <maximized>Horizontal</maximized>
+    </application>
+
+
 Using a different terminal emulator
 -----------------------------------
 
