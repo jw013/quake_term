@@ -68,8 +68,8 @@ To make your terminal window to look more like a queake terminal,
     <application name="roxterm">
         <decor>no</decor>
         <position force="yes">
-        <x>center</x>
-        <y>0</y>
+            <x>center</x>
+            <y>0</y>
         </position>
         <desktop>all</desktop>
         <layer>above</layer>
